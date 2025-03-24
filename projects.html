@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completed Projects - Manjaly</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+      body {
+        font-family: "Space Grotesk", sans-serif;
+        background-color: #c3dcb5;
+        color: black;
+        scroll-behavior: smooth;
+        overflow-x: hidden; /* Prevent horizontal scroll */
+        width: 100%;
+      }
+ 
+      .nav-link {
+        color: #cce4bc;
+        transition: all 0.3s ease;
+      }
+      .nav-link:hover {
+        color: #8bc272;
+      }
+      .nav-link.active {
+        color: #8bc272;
+      }
+            /* Hamburger Menu Styles */
+            .hamburger {
+        width: 24px;
+        height: 20px;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .hamburger span {
+        display: block;
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        background: white;
+        border-radius: 2px;
+        transition: 0.25s ease-in-out;
+      }
+
+      .hamburger span:nth-child(1) {
+        top: 0px;
+      }
+      .hamburger span:nth-child(2) {
+        top: 9px;
+      }
+      .hamburger span:nth-child(3) {
+        top: 18px;
+      }
+
+      /* Animated State */
+      .hamburger.active span:nth-child(1) {
+        top: 9px;
+        transform: rotate(45deg);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        top: 9px;
+        transform: rotate(-45deg);
+      }
+
+      /* Prevent scroll when menu is open */
+      body.menu-open {
+        overflow: hidden;
+      }
+      .nav-container {
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-[#1a1a1a] bg-opacity-95 left-0 right-0">
+      <div class="nav-container">
+        <div class="max-w-7xl mx-auto flex justify-between items-center py-4">
+          <a href="index.html" class="text-2xl font-bold flex items-center">
+            <span class="text-white flex items-center gap-2">
+              <img src="manjani-logo.png" alt="" class="h-8 w-auto" />
+              <span class="flex flex-col">
+                <span>Manjaly</span>
+                <span>Infrastructures</span>
+              </span>
+            </span>
+          </a>
+          
+          <!-- Hamburger Menu Button -->
+          <button class="lg:hidden text-white hamburger-btn" id="menuBtn">
+            <div class="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </button>
+          
+          <div class="hidden lg:flex items-center space-x-8">
+            <a href="index.html" class="nav-link active" data-section="home">Home</a>
+            <a href="about.html" class="nav-link" data-section="about">About</a>
+            <a href="partners.html" class="nav-link" data-section="partners">Partner Companies</a>
+            <a href="projects.html" class="nav-link" data-section="projects"
+              >Projects</a
+            >
+
+
+            <a href="blog.html" class="nav-link" data-section="blog"
+            > Blog </a
+          >
+            <a
+              href="index.html#contact"
+              class="px-4 py-2 text-white rounded hover:text-black hover:bg-[#cce4bc] border border-2 border-[#cce4bc] transition-all"
+            >
+              Contact
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div
+      id="mobileMenu"
+      class="lg:hidden fixed inset-0 bg-[#1a1a1a] bg-opacity-95 transform translate-x-full transition-transform duration-300 ease-in-out z-40"
+    >
+      <div class="flex flex-col items-center justify-center h-full space-y-8">
+        <a href="index.html" class="nav-link active text-2xl" data-section="home"
+          >Home</a
+        >
+        <a href="about.html" class="nav-link text-2xl" data-section="about"
+          >About</a
+        >
+        <a href="partners.html" class="nav-link text-2xl" data-section="partners"
+          >Partner Companies</a
+        >
+        <a href="projects.html" class="nav-link text-2xl" data-section="projects"
+          >Projects</a
+        >
+
+        <a href="blog.html" class="nav-link text-2xl" data-section="blog"
+          >Blog</a
+        >
+        <a
+          href="index.html#contact"
+          class="px-6 py-3 text-white text-2xl rounded hover:text-black hover:bg-white border-2 border-white transition-all"
+        >
+          Contact
+        </a>
+      </div>
+    </div> 
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d" 
+                 alt="Hero Background" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 text-center">
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 text-[#cce4bc]" data-aos="fade-down">
+                Completed Projects
+            </h1>
+            <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto text-[#cce4bc]" data-aos="fade-up" data-aos-delay="200">
+                Explore our successfully completed architectural projects.
+            </p>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="py-20 px-4 md:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+                <!-- Static Projects -->
+                <div class="group" data-aos="fade-up">
+                    <div class="overflow-hidden rounded-lg">
+                        <img src="images/p2.jpg" 
+                             alt=" Project 2" 
+                             class="w-full h-72 object-contain rounded-lg">
+                    </div>
+                    <div class="mt-6 space-y-2">
+                        <h3 class="text-xl font-bold">MASJID</h3>
+                        <p class="text-gray-600">ALUVA, PARAMBAYAM</p>
+                        <p class="text-gray-600">Area: 10000 sq ft</p>
+                        <p class="text-gray-600">Client: PARAMBAYAM JUMA MASJID</p>
+                    </div>
+                </div>
+                <div class="group" data-aos="fade-up">
+                    <div class="overflow-hidden rounded-lg">
+                        <img src="images/p13.jpg" 
+                             alt=" Project 2" 
+                             class="w-full h-72 object-contain rounded-lg">
+                    </div>
+                    <div class="mt-6 space-y-2">
+                        <h3 class="text-xl font-bold">MES ENGINEERING COLLEGE</h3>
+                        <p class="text-gray-600">KUTTIPURAM</p>
+                        <p class="text-gray-600">Area: 45000 sq ft</p>
+                        <p class="text-gray-600">Client: MES GROUP</p>
+                    </div>
+                </div>
+                <div class="group" data-aos="fade-up">
+                    <div class="overflow-hidden rounded-lg">
+                        <img src="images/p1.jpg" 
+                             alt=" Project 3" 
+                             class="w-full h-72 object-contain rounded-lg">
+                    </div>
+                    <div class="mt-6 space-y-2">
+                        <h3 class="text-xl font-bold">HOSPITAL BUILDING</h3>
+                        <p class="text-gray-600">MOONUPEEDIKA</p>
+                        <p class="text-gray-600">Area:  60000 sq ft</p>
+                        <p class="text-gray-600">Client: KMC</p>
+                    </div>
+                </div>
+
+                <div class="group" data-aos="fade-up">
+                    <div class="overflow-hidden rounded-lg">
+                        <img src="images/p14.jpg" 
+                             alt=" Project 4" 
+                             class="w-full h-72 object-contain rounded-lg">
+                    </div>
+                    <div class="mt-6 space-y-2">
+                        <h3 class="text-xl font-bold">COOPERATIVE BANK BUILDING</h3>
+                        <p class="text-gray-600">KATTOOR , KERALA</p>
+                        <p class="text-gray-600">Area: 17000 sq ft</p>
+                        <p class="text-gray-600">Client: KATTOOR CO OPERATIVE SOCIETY</p>
+                    </div>
+                </div>
+                <div class="group" data-aos="fade-up">
+                    <div class="overflow-hidden rounded-lg">
+                        <img src="images/p12.jpg" 
+                             alt=" Project 5" 
+                             class="w-full h-72 object-contain rounded-lg">
+                    </div>
+                    <div class="mt-6 space-y-2">
+                        <h3 class="text-xl font-bold">COLLEGE BUILDING</h3>
+                        <p class="text-gray-600">THRISSUR</p>
+                        <p class="text-gray-600">Area: 200000 sq ft</p>
+                        <p class="text-gray-600">Client: ROYAL COLLEGE OF ENGINEERING</p>
+                    </div>
+                </div>
+                <div class="group" data-aos="fade-up">
+                    <div class="overflow-hidden rounded-lg">
+                        <img src="images/p11.jpg" 
+                             alt=" Project 6" 
+                             class="w-full h-72 object-contain rounded-lg">
+                    </div>
+                    <div class="mt-6 space-y-2">
+                        <h3 class="text-xl font-bold">ROWDHA TOWER
+                        </h3>
+                        <p class="text-gray-600">TRICHUR, KERALA
+
+                        </p>
+                        <p class="text-gray-600">Area: 75000 sq ft </p>
+                        <p class="text-gray-600">Client: ROWDHA PROPERTIES</p>
+                    </div>
+                </div>
+                <div class="group" data-aos="fade-up">
+                    <div class="overflow-hidden rounded-lg">
+                        <img src="images/p10.jpg" 
+                             alt=" Project 7" 
+                             class="w-full h-72 object-contain rounded-lg">
+                    </div>
+                    <div class="mt-6 space-y-2">
+                        <h3 class="text-xl font-bold">SCHOOL BUILDING
+                        </h3>
+                        <p class="text-gray-600">KODALY</p>
+                        <p class="text-gray-600">Area: 22000 sq ft</p>
+                        <p class="text-gray-600">Client: S N VIDHYA MANDIR</p>
+                    </div>
+                </div>
+                <div class="group" data-aos="fade-up">
+                    <div class="overflow-hidden rounded-lg">
+                        <img src="images/p5.jpg" 
+                             alt=" Project " 
+                             class="w-full h-72 object-contain rounded-lg">
+                    </div>
+                    <div class="mt-6 space-y-2">
+                        <h3 class="text-xl font-bold">TEXTILE SHOW ROOM
+                        </h3>
+                        <p class="text-gray-600">IRINJALAKKUDA , KERALA
+
+                        </p>
+                        <p class="text-gray-600">Area: 115000 sq ft</p>
+                        <p class="text-gray-600">Client: JL GROUP</p>
+                    </div>
+                </div>
+                <div class="group" data-aos="fade-up">
+                    <div class="overflow-hidden rounded-lg">
+                        <img src="images/p8.jpg" 
+                             alt=" Project 9" 
+                             class="w-full h-72 object-contain rounded-lg">
+                    </div>
+                    <div class="mt-6 space-y-2">
+                        <h3 class="text-xl font-bold">VYKUNDAM</h3>
+                        <p class="text-gray-600">GURUVATUR , KERALA
+
+                        </p>
+                        <p class="text-gray-600">Area: 125000 sq ft</p>
+                        <p class="text-gray-600">Client: UNI DESIGN BUILDERS & DEVELOPERS</p>
+                    </div>
+                </div>
+                <div class="group" data-aos="fade-up">
+                    <div class="overflow-hidden rounded-lg">
+                        <img src="images/p7.jpg" 
+                             alt=" Project 10" 
+                             class="w-full h-72 object-contain rounded-lg">
+                    </div>
+                    <div class="mt-6 space-y-2">
+                        <h3 class="text-xl font-bold">SHOPPING COMPLEX
+                        </h3>
+                        <p class="text-gray-600">PANAMKUTTYCHIRA, KERALA
+
+                        </p>
+                        <p class="text-gray-600">Area: 28000 sq ft</p>
+                        <p class="text-gray-600">Client: OLLUR COOPERATIVE SOCIETY</p>
+                    </div>
+                </div>
+                <div class="group" data-aos="fade-up">
+                    <div class="overflow-hidden rounded-lg">
+                        <img src="images/p6.jpg" 
+                             alt=" Project 11" 
+                             class="w-full h-72 object-contain rounded-lg">
+                    </div>
+                    <div class="mt-6 space-y-2">
+                        <h3 class="text-xl font-bold">NEHRU COLLEGE OF ENGINEERING
+                        </h3>
+                        <p class="text-gray-600">PAMBADY, KERALA
+
+                        </p>
+                        <p class="text-gray-600">Area: 125000 sq ft</p>
+                        <p class="text-gray-600">Client: NEHRU COLLEGE</p>
+                    </div>
+                </div>
+                <div class="group" data-aos="fade-up">
+                    <div class="overflow-hidden rounded-lg">
+                        <img src="images/p5.jpg" 
+                             alt=" Project " 
+                             class="w-full h-72 object-contain rounded-lg">
+                    </div>
+                    <div class="mt-6 space-y-2">
+                        <h3 class="text-xl font-bold">EMMATTY TOWER
+                        </h3>
+                        <p class="text-gray-600">TRICHUR, KERALA
+
+                        </p>
+                        <p class="text-gray-600">Area: 82000 sq ft</p>
+                        <p class="text-gray-600">Client: EMMATTY GROUP</p>
+                    </div>
+                </div>
+                <div class="group" data-aos="fade-up">
+                    <div class="overflow-hidden rounded-lg">
+                        <img src="images/p4.jpg" 
+                             alt=" Project " 
+                             class="w-full h-72 object-contain rounded-lg">
+                    </div>
+                    <div class="mt-6 space-y-2">
+                        <h3 class="text-xl font-bold">BANK BUILDING
+                        </h3>
+                        <p class="text-gray-600">OTTAPALAM, PALAKKAD
+
+                        </p>
+                        <p class="text-gray-600">Area: 9000 sq ft</p>
+                        <p class="text-gray-600">Client: AMBALAPARA SERVICE CO-OPERATIVE BANK</p>
+                    </div>
+                </div>
+                <div class="group" data-aos="fade-up">
+                    <div class="overflow-hidden rounded-lg">
+                        <img src="images/p3.jpg" 
+                             alt=" Project " 
+                             class="w-full h-72 object-contain rounded-lg">
+                    </div>
+                    <div class="mt-6 space-y-2">
+                        <h3 class="text-xl font-bold">CONVENTION CENTER
+
+                        </h3>
+                        <p class="text-gray-600">IRINJALAKUDA, THRISSUR
+
+
+
+                        </p>
+                        <p class="text-gray-600">Area: 125000 sq ft</p>
+                        <p class="text-gray-600">Client: MCP GROUP</p>
+                    </div>
+                </div>
+
+
+
+                <!-- More static projects can be added here -->
+            </div>
+        </div>
+    </section>
+
+    <div
+class="relative h-[400px] mb-24 rounded-lg overflow-hidden px-4 md:px-8 mt-8 mx-auto w-[90%]"
+data-aos="zoom-in"
+>
+<img
+  src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d"
+  alt="Architecture Background"
+  class="absolute inset-0 w-full h-full object-cover opacity-50"
+/>
+<div
+  class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4"
+>
+  <h2 class="text-4xl md:text-5xl font-bold mb-6">
+    Engage With Our Expert Architects
+  </h2>
+  <p class="text-xl mb-8">Schedule A Consultation Today</p>
+  <a href="index.html#contact">
+  <button
+    class="bg-black text-[#cce4bc] px-8 py-3 rounded hover:bg-[#cce4bc] hover:text-black transition-colors"
+  >
+    Book Now
+  </button></a>
+</div>
+</div>
+
+
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+            easing: 'ease-out-cubic'
+        });
+
+        // Initialize Supabase client
+        const { createClient } = supabase;
+        const supabaseClient = createClient(
+            'https://olkcohyhgnsdwihrhtpt.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9sa2NvaHloZ25zZHdpaHJodHB0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDAyOTMzMTgsImV4cCI6MjA1NTg2OTMxOH0.QJVOWw3gwsapcWwbeIHncNrJbb0obbqoM3o97Fc955Q'
+        );
+
+        // Load completed projects
+        async function loadProjects() {
+            try {
+                const { data, error } = await supabaseClient
+                    .from('projects')
+                    .select('*')
+                    .eq('status', 'completed')
+                    .order('completion_date', { ascending: false });
+
+                if (error) throw error;
+
+                const projectsGrid = document.getElementById('projects-grid');
+
+                if (!data || data.length === 0) {
+                    return; // Don't show any message since we have static projects
+                }
+
+                const dynamicProjectsHTML = data.map(project => `
+                    <div class="group" data-aos="fade-up">
+                        <div class="overflow-hidden rounded-lg">
+                            <img src="${project.image_url || ''}" 
+                                 alt="${project.name || ''}" 
+                                 class="w-full h-72 object-contain rounded-lg">
+                        </div>
+                        <div class="mt-6 space-y-2">
+                            <h3 class="text-xl font-bold">${project.name || ''}</h3>
+                            <p class="text-gray-600">${project.location || ''}</p>
+                            <p class="text-gray-600">Area: ${project.area || 0} sq ft</p>
+                            <p class="text-gray-600">Client: ${project.client || ''}</p>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Append dynamic projects directly to the grid
+                projectsGrid.insertAdjacentHTML('beforeend', dynamicProjectsHTML);
+                AOS.refresh();
+
+            } catch (error) {
+                console.error('Error loading projects:', error);
+                // Don't show error message since we have static projects
+            }
+        }
+
+        // Load projects when page loads
+        loadProjects();
+              // Mobile Menu Functionality
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const hamburger = menuBtn.querySelector(".hamburger");
+
+      menuBtn.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        document.body.classList.toggle("menu-open");
+
+        if (mobileMenu.classList.contains("translate-x-full")) {
+          mobileMenu.classList.remove("translate-x-full");
+          mobileMenu.classList.add("translate-x-0");
+        } else {
+          mobileMenu.classList.remove("translate-x-0");
+          mobileMenu.classList.add("translate-x-full");
+        }
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll("#mobileMenu .nav-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          document.body.classList.remove("menu-open");
+          mobileMenu.classList.remove("translate-x-0");
+          mobileMenu.classList.add("translate-x-full");
+        });
+      });
+
+      // Close mobile menu when screen size changes to desktop
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768) {
+          hamburger.classList.remove("active");
+          document.body.classList.remove("menu-open");
+          mobileMenu.classList.remove("translate-x-0");
+          mobileMenu.classList.add("translate-x-full");
+        }
+      });
+
+
+    </script>
+</body>
+</html>

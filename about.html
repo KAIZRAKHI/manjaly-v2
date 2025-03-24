@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Manjaly</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://kit.fontawesome.com/c075818245.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Space Grotesk", sans-serif;
+        background-color: #deefd4;
+        color: black;
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+      }
+      .nav-link {
+        color: #e8f2e2;
+        transition: all 0.3s ease;
+      }
+      .nav-link:hover {
+        color: #cce4bc;
+      }
+      .nav-link.active {
+        color: #cce4bc;
+      }
+
+      .bg-gradient-1 {
+        background: linear-gradient(135deg, #c3dcb5 0%, #add299 100%);
+      }
+      
+      .bg-gradient-2 {
+        background: linear-gradient(135deg, #e8f2e2 0%, #c3dcb5 100%);
+      }
+
+      .bg-pattern-1 {
+        background-color: #f5f8f3;
+        background-image: radial-gradient(#c3dcb5 0.5px, transparent 0.5px);
+        background-size: 10px 10px;
+      }
+
+      .hover-card {
+        transition: all 0.3s ease;
+      }
+      
+      .hover-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .timeline-dot {
+        background: #add299;
+        border: 3px solid #c3dcb5;
+        z-index: 1;
+      }
+
+      /* Timeline vertical line styles */
+      .relative > .absolute {
+        z-index: 0;
+      }
+
+      /* Timeline items */
+      .flex.flex-col.md\:flex-row {
+        position: relative;
+        z-index: 2;
+      }
+      .testimonial-card {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+      }
+
+      .partner-card {
+        background: white;
+        transition: all 0.3s ease;
+      }
+      
+      .partner-card:hover {
+        background: #f5f8f3;
+        transform: scale(1.02);
+      }
+            /* Hamburger Menu Styles */
+            .hamburger {
+        width: 24px;
+        height: 20px;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .hamburger span {
+        display: block;
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        background: white;
+        border-radius: 2px;
+        transition: 0.25s ease-in-out;
+      }
+
+      .hamburger span:nth-child(1) {
+        top: 0px;
+      }
+      .hamburger span:nth-child(2) {
+        top: 9px;
+      }
+      .hamburger span:nth-child(3) {
+        top: 18px;
+      }
+
+      /* Animated State */
+      .hamburger.active span:nth-child(1) {
+        top: 9px;
+        transform: rotate(45deg);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        top: 9px;
+        transform: rotate(-45deg);
+      }
+
+      /* Prevent scroll when menu is open */
+      body.menu-open {
+        overflow: hidden;
+      }
+
+      /* Contain AOS animations */
+      [data-aos] {
+        overflow: visible;
+      }
+
+      /* Update AOS animations to use transform with smaller values */
+      [data-aos="fade-left"] {
+        transform: translateX(20px);
+      }
+
+      [data-aos="fade-right"] {
+        transform: translateX(-20px);
+      }
+
+      [data-aos].aos-animate {
+        transform: translateX(0);
+      }
+
+      /* Make sure all sections stay within viewport without scrollbars */
+      section {
+        overflow: visible;
+        max-width: 100vw;
+      }
+
+      /* Update grid container styles */
+      .grid {
+        overflow: visible;
+        max-width: 100%;
+      }
+      .nav-container {
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      /* Add these to your existing styles */
+      .testimonial-slider {
+        touch-action: pan-y pinch-zoom;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+      }
+
+      .testimonial-slide {
+        pointer-events: none;
+      }
+
+      .testimonial-slide video,
+      .testimonial-slide button {
+        pointer-events: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-[#1a1a1a] bg-opacity-95 left-0 right-0">
+      <div class="nav-container">
+        <div class="max-w-7xl mx-auto flex justify-between items-center py-4">
+          <a href="index.html" class="text-2xl font-bold flex items-center">
+            <span class="text-white flex items-center gap-2">
+              <img src="manjani-logo.png" alt="" class="h-8 w-auto" />
+              <span class="flex flex-col">
+                <span>Manjaly</span>
+                <span>Infrastructures</span>
+              </span>
+            </span>
+          </a>
+          
+          <!-- Hamburger Menu Button -->
+          <button class="lg:hidden text-white hamburger-btn" id="menuBtn">
+            <div class="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </button>
+          
+          <div class="hidden lg:flex items-center space-x-8">
+            <a href="index.html" class="nav-link active" data-section="home">Home</a>
+            <a href="about.html" class="nav-link" data-section="about">About</a>
+            <a href="partners.html" class="nav-link" data-section="partners">Partner Companies</a>
+            <a href="projects.html" class="nav-link" data-section="projects"
+              >Projects</a
+            >
+
+            <a href="blog.html" class="nav-link" data-section="blog"
+            > Blog </a
+          >
+            <a
+              href="index.html#contact"
+              class="px-4 py-2 text-white rounded hover:text-black hover:bg-[#cce4bc] border border-2 border-[#cce4bc] transition-all"
+            >
+              Contact
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div
+      id="mobileMenu"
+      class="lg:hidden fixed inset-0 bg-[#1a1a1a] bg-opacity-95 transform translate-x-full transition-transform duration-300 ease-in-out z-40"
+    >
+      <div class="flex flex-col items-center justify-center h-full space-y-8">
+        <a href="index.html" class="nav-link active text-2xl" data-section="home"
+          >Home</a
+        >
+        <a href="about.html" class="nav-link text-2xl" data-section="about"
+          >About</a
+        >
+        <a href="partners.html" class="nav-link text-2xl" data-section="partners"
+          >Partner Companies</a
+        >
+        <a href="projects.html" class="nav-link text-2xl" data-section="projects"
+          >Projects</a
+        >
+
+        <a href="blog.html" class="nav-link text-2xl" data-section="blog"
+          >Blog</a
+        >
+        <a
+          href="index.html#contact"
+          class="px-6 py-3 text-white text-2xl rounded hover:text-black hover:bg-white border-2 border-white transition-all"
+        >
+          Contact
+        </a>
+      </div>
+    </div> 
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center">
+      <div class="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+          alt="Hero Background"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-b from-black/70 to-black/40 backdrop-blur-sm"></div>
+      </div>
+      <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 text-center">
+        <h1
+          class="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 !text-[#cce4bc]"
+          data-aos="fade-down"
+        >
+          Building Tomorrow's<br />Landmarks Today
+        </h1>
+        <p
+          class="text-xl !text-[#cce4bc] mb-8 max-w-3xl mx-auto"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          With over two decades of architectural excellence, we've been shaping
+          skylines and transforming spaces across the globe.
+        </p>
+        <button
+          class="bg-[#cce4bc] text-black px-8 py-3 rounded hover:bg-[#add299] hover:text-black border-2 border-[#cce4bc] transition-all"
+          data-aos="fade-up"
+          data-aos-delay="400"
+        >
+          Explore Our Legacy
+        </button>
+      </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="py-20 bg-gradient-2">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div data-aos="fade-right">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Our Story</h2>
+            <p class="text-black mb-6">
+              Founded in 1995, Manjaly has grown from a small design studio to a
+              leading architectural firm. Our journey has been marked by
+              unwavering commitment to excellence, innovation, and sustainable
+              design practices.
+            </p>
+            <p class="text-black mb-6">
+              Today, we're proud to be at the forefront of architectural
+              innovation, creating spaces that inspire, function flawlessly, and
+              stand the test of time.
+            </p>
+            <div class="grid grid-cols-2 gap-8 mt-8">
+              <div>
+                <h3 class="text-5xl font-bold mb-2">20+</h3>
+                <p class="text-black">Years Experience</p>
+              </div>
+              <div>
+                <h3 class="text-5xl font-bold mb-2">500+</h3>
+                <p class="text-black">Projects Completed</p>
+              </div>
+            </div>
+          </div>
+          <div class="relative" data-aos="fade-left">
+            <video
+              src="_MANAJALY INFRASTRUCTURE_1 Min_2K.webm"
+              alt="About Us"
+              controls
+              muted
+              autoplay
+              class="w-full rounded-lg"
+            ></video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-20 bg-gradient-1">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <h2
+          class="text-4xl md:text-5xl font-bold text-center mb-16 text-black"
+          data-aos="fade-down"
+        >
+          Why Choose Us
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div
+            class="bg-[#deedd7] backdrop-blur hover-card rounded-lg p-8 shadow-lg"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div
+              class="w-12 h-12 rounded-full bg-gradient-1 flex items-center justify-center flex-shrink-0 mb-6"
+            >
+              <i class="fa-regular fa-clock text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4">Time Management</h3>
+            <p class="text-black">
+              Projects are completed on schedule without delays.
+            </p>
+          </div>
+
+          <div
+            class="bg-[#deedd7] backdrop-blur hover-card rounded-lg p-8 shadow-lg"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div
+              class="w-12 h-12 rounded-full bg-gradient-1 flex items-center justify-center flex-shrink-0 mb-6"
+            >
+              <i class="ri-team-line text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4">Expert Team</h3>
+            <p class="text-black">
+              Skilled professionals with in-depth industry knowledge.
+            </p>
+          </div>
+
+          <div
+            class="bg-[#deedd7] backdrop-blur hover-card rounded-lg p-8 shadow-lg"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div
+              class="w-12 h-12 rounded-full bg-gradient-1 flex items-center justify-center flex-shrink-0 mb-6"
+            >
+              <i class="fa-solid fa-award text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4">Proven Track Record</h3>
+            <p class="text-black">
+              Years of experience delivering successful construction projects.
+            </p>
+          </div>
+
+          <div
+            class="bg-[#deedd7] backdrop-blur hover-card rounded-lg p-8 shadow-lg"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <div
+              class="w-12 h-12 rounded-full bg-gradient-1 flex items-center justify-center flex-shrink-0 mb-6"
+            >
+              <i class="fa-solid fa-list-check text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4">
+              End-to-End Project Management
+            </h3>
+            <p class="text-black">
+              We take care of all legal formalities, including permits,
+              approvals, and paperwork, ensuring a smooth process.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Approach -->
+    <section class="py-20 bg-gradient-2">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <h2
+          class="text-4xl md:text-5xl font-bold text-center mb-6 text-black"
+          data-aos="fade-down"
+        >
+          Our Approach to Quality & Execution
+        </h2>
+        <p
+          class="text-black text-center mb-16 max-w-3xl mx-auto"
+          data-aos="fade-up"
+        >
+          We follow a comprehensive methodology to ensure excellence in every
+          project
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Systematic Project Execution -->
+          <div
+            class="bg-[#deedd7] backdrop-blur hover-card rounded-lg p-8 shadow-lg"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="flex items-start gap-6 ">
+              <div
+                class="w-12 h-12 rounded-full bg-gradient-1 flex items-center justify-center flex-shrink-0"
+              >
+                <i class="ri-lightbulb-line text-primary text-2xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-4">
+                  Systematic Project Execution
+                </h3>
+                <ul class="space-y-3 text-black">
+                  <li>
+                    • Regular requisitioning, reporting, and apex-level control
+                    ensure cost and time efficiency
+                  </li>
+                  <li>
+                    • Dedicated General Manager and structured teams for smooth
+                    operations
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- On-Site Quality Control -->
+          <div
+            class="bg-[#deedd7] backdrop-blur hover-card rounded-lg p-8 shadow-lg"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="flex items-start gap-6">
+              <div
+                class="w-12 h-12 rounded-full bg-gradient-1 flex items-center justify-center flex-shrink-0"
+              >
+                <i class="ri-tools-line text-primary text-2xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-4">On-Site Quality Control</h3>
+                <ul class="space-y-3 text-black">
+                  <li>• Fully equipped laboratories at each site</li>
+                  <li>
+                    • Daily material testing as per Indian Standards before use
+                  </li>
+                  <li>
+                    • Strict quality checklists to ensure top-tier workmanship
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Monitoring & Reporting -->
+          <div
+            class="bg-[#deedd7] backdrop-blur hover-card rounded-lg p-8 shadow-lg"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="flex items-start gap-6">
+              <div
+                class="w-12 h-12 rounded-full bg-gradient-1 flex items-center justify-center flex-shrink-0"
+              >
+                <i class="ri-bar-chart-line text-primary text-2xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-4">
+                  Project Monitoring & Reporting
+                </h3>
+                <ul class="space-y-3 text-black">
+                  <li>• Pre-planned program charts for all projects</li>
+                  <li>
+                    • Regular progress monitoring and monthly reports with
+                    photos for clients
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Training & Innovation -->
+          <div
+            class="bg-[#deedd7] backdrop-blur hover-card rounded-lg p-8 shadow-lg"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <div class="flex items-start gap-6">
+              <div
+                class="w-12 h-12 rounded-full bg-gradient-1 flex items-center justify-center flex-shrink-0"
+              >
+                <i class="ri-book-open-line text-primary text-2xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-4">Training & Innovation</h3>
+                <ul class="space-y-3 text-black">
+                  <li>
+                    • In-house training sessions for engineers and workers
+                  </li>
+                  <li>
+                    • Custom mix designs tested for strength and workability in
+                    projects
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vision & Mission -->
+    <section class="py-20 bg-gradient-1">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <div class="bg-gradient-2 backdrop-blur rounded-lg p-8 md:p-12">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <!-- Vision Side -->
+            <div data-aos="fade-right">
+              <h2 class="text-4xl md:text-5xl font-bold mb-8">Our Vision</h2>
+              <div class="space-y-6">
+                <p class="text-black text-lg leading-relaxed">
+                  To be the global leader in innovative architectural solutions,
+                  creating sustainable spaces that enhance lives and
+                  communities.
+                </p>
+                <div class="space-y-4 mt-8">
+                  <div class="flex items-start space-x-4">
+                    <div
+                      class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0"
+                    >
+                      <i class="ri-focus-3-line text-primary text-2xl"></i>
+                    </div>
+                    <div>
+                      <h3 class="text-xl font-bold mb-2">Innovation First</h3>
+                      <p class="text-black">
+                        Pushing boundaries with cutting-edge design solutions
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex items-start space-x-4">
+                    <div
+                      class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0"
+                    >
+                      <i class="ri-earth-line text-primary text-2xl"></i>
+                    </div>
+                    <div>
+                      <h3 class="text-xl font-bold mb-2">Sustainability</h3>
+                      <p class="text-black">
+                        Creating eco-friendly spaces for future generations
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mission Side -->
+            <div data-aos="fade-left">
+              <h2 class="text-4xl md:text-5xl font-bold mb-8">Our Mission</h2>
+              <div class="space-y-6">
+                <p class="text-black text-lg leading-relaxed">
+                  To deliver exceptional architectural solutions that transform
+                  spaces, enrich communities, and exceed client expectations
+                  through innovation and sustainable practices.
+                </p>
+                <div class="space-y-4 mt-8">
+                  <div class="flex items-start space-x-4">
+                    <div
+                      class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0"
+                    >
+                      <i class="ri-shield-star-line text-primary text-2xl"></i>
+                    </div>
+                    <div>
+                      <h3 class="text-xl font-bold mb-2">Excellence</h3>
+                      <p class="text-black">
+                        Maintaining the highest standards in every project we
+                        undertake
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex items-start space-x-4">
+                    <div
+                      class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0"
+                    >
+                      <i class="ri-team-line text-primary text-2xl"></i>
+                    </div>
+                    <div>
+                      <h3 class="text-xl font-bold mb-2">Collaboration</h3>
+                      <p class="text-black">
+                        Working closely with clients to bring their vision to
+                        life
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="py-20 bg-gradient-1">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <h2
+          class="text-4xl md:text-5xl font-bold text-center mb-6 text-black"
+          data-aos="fade-down"
+        >
+          Our Journey
+        </h2>
+        <p
+          class="text-black text-center mb-16 max-w-3xl mx-auto"
+          data-aos="fade-up"
+        >
+          A legacy of excellence since 1994
+        </p>
+
+        <div class="relative">
+          <!-- Vertical Line -->
+          <div
+            class="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gray-800"
+          ></div>
+
+          <!-- Timeline Items -->
+          <div class="space-y-16">
+            <!-- Item 1 -->
+            <div
+              class="flex flex-col md:flex-row items-center justify-end md:justify-between "
+              data-aos="fade-right"
+            >
+              <div
+                class="w-full md:w-5/12 order-2 md:order-1 bg-gradient-1 "
+              >
+                <div
+                  class="border-2 border-black p-6 rounded-lg hover:border-black/30 transition-colors "
+                >
+                  <h3 class="text-xl font-bold mb-3">Foundation</h3>
+                  <p class="text-black">
+                    Founded in 1994 by Mr. Jaison J Manjaly, Manjaly
+                    Infrastructure has grown into one of South India's leading
+                    construction companies.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div
+              class="flex flex-col md:flex-row items-center justify-end md:justify-between"
+              data-aos="fade-left"
+            >
+              <div class="w-full md:w-5/12"></div>
+              <div
+                class="w-4 h-4 rounded-full bg-white border-4 border-black hidden md:flex items-center justify-center z-10 my-4 md:my-0 timeline-dot"
+              ></div>
+              <div class="w-full md:w-5/12 bg-gradient-1 ">
+                <div
+                  class="border-2 border-black p-6 rounded-lg hover:border-black/30 transition-colors"
+                >
+                  <h3 class="text-xl font-bold mb-3">Strong Presence</h3>
+                  <p class="text-black">
+                    Headquartered in Trichur, Kerala, with a team of 125+
+                    professionals and a strong operational network across the
+                    region.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div
+              class="flex flex-col md:flex-row items-center justify-end md:justify-between"
+              data-aos="fade-right"
+            >
+              <div
+                class="w-full md:w-5/12 order-2 md:order-1 bg-gradient-1"
+              >
+                <div
+                  class="border-2 border-black p-6 rounded-lg hover:border-black/30 transition-colors"
+                >
+                  <h3 class="text-xl font-bold mb-3">Rapid Growth</h3>
+                  <p class="text-black">
+                    16+ years of rapid growth, delivering high-quality civil
+                    engineering solutions and setting new industry standards.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div
+              class="flex flex-col md:flex-row items-center justify-end md:justify-between"
+              data-aos="fade-left"
+            >
+              <div class="w-full md:w-5/12"></div>
+              <div
+                class="w-4 h-4 rounded-full bg-white border-4 border-black hidden md:flex items-center justify-center z-10 my-4 md:my-0 timeline-dot"
+              ></div>
+              <div class="w-full md:w-5/12 bg-gradient-1">
+                <div
+                  class="border-2 border-black p-6 rounded-lg hover:border-black/30 transition-colors"
+                >
+                  <h3 class="text-xl font-bold mb-3">Trusted Excellence</h3>
+                  <p class="text-black">
+                    Trusted by top builders in Kerala, executing prestigious
+                    projects with integrity, professionalism, and customer
+                    satisfaction at the core.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div
+              class="flex flex-col md:flex-row items-center justify-end md:justify-between"
+              data-aos="fade-right"
+            >
+              <div
+                class="w-full md:w-5/12 order-2 md:order-1 bg-gradient-1"
+              >
+                <div
+                  class="border-2 border-black p-6 rounded-lg hover:border-black/30 transition-colors"
+                >
+                  <h3 class="text-xl font-bold mb-3">Raising the Bar</h3>
+                  <p class="text-black">
+                    Implemented advanced quality control measures, ensuring high
+                    standards in every project.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div
+              class="flex flex-col md:flex-row items-center justify-end md:justify-between"
+              data-aos="fade-left"
+            >
+              <div class="w-full md:w-5/12"></div>
+              <div
+                class="w-4 h-4 rounded-full bg-white border-4 border-black hidden md:flex items-center justify-center z-10 my-4 md:my-0 timeline-dot"
+              ></div>
+              <div class="w-full md:w-5/12 bg-gradient-1">
+                <div
+                  class="border-2 border-black p-6 rounded-lg hover:border-black/30 transition-colors"
+                >
+                  <h3 class="text-xl font-bold mb-3">Pushing Boundaries</h3>
+                  <p class="text-black">
+                    Continuing to set new benchmarks, delivering on-time,
+                    high-quality construction with a focus on client
+                    satisfaction.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gradient-2">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <h2 class="text-4xl md:text-5xl font-bold text-center mb-6 text-black" data-aos="fade-down">
+          What our clients say about working with us
+        </h2>
+
+        <div class="relative overflow-hidden" data-aos="fade-up">
+          <!-- Testimonials Container -->
+          <div class="testimonial-slider flex transition-transform duration-500">
+            <!-- Video Testimonial -->
+            <div class="testimonial-slide w-full flex-shrink-0">
+              <div class="max-w-3xl mx-auto">
+                <div class="aspect-video w-full mb-6">
+                  <video class="w-full h-full rounded-lg" controls>
+                    <source src="https://cdn.jsdelivr.net/gh/brandcrafters01/media@main/manjaly-testi.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Text Testimonial 1 -->
+            <div class="testimonial-slide w-full flex-shrink-0">
+              <div class="max-w-3xl mx-auto text-center">
+                <div class="mb-8">
+                  <i class="ri-double-quotes-l text-6xl text-primary/30"></i>
+                </div>
+                <p class="text-xl md:text-2xl text-black mb-8">
+                  "Working with Manjaly Infrastructure was an exceptional experience. Their attention to detail and commitment to quality exceeded our expectations. The team's professionalism and expertise were evident throughout the project."
+                </p>
+                <div class="flex items-center justify-center space-x-4">
+                  <div>
+                    <h4 class="font-bold text-black">Sarah Johnson</h4>
+                    <p class="text-black">Project Developer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Text Testimonial 2 -->
+            <div class="testimonial-slide w-full flex-shrink-0">
+              <div class="max-w-3xl mx-auto text-center">
+                <div class="mb-8">
+                  <i class="ri-double-quotes-l text-6xl text-primary/30"></i>
+                </div>
+                <p class="text-xl md:text-2xl text-black mb-8">
+                  "From concept to completion, Manjaly Infrastructure demonstrated unparalleled expertise. Their ability to understand our vision and translate it into reality was remarkable."
+                </p>
+                <div class="flex items-center justify-center space-x-4">
+                  <div>
+                    <h4 class="font-bold text-black">David Kumar</h4>
+                    <p class="text-black">Property Developer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hidden lg:block">
+            <!-- Previous Button -->
+            <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black text-white rounded-full p-3 transition-all" id="prevBtn">
+              <i class="ri-arrow-left-line text-2xl"></i>
+            </button>
+            <!-- Next Button -->
+            <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black text-white rounded-full p-3 transition-all" id="nextBtn">
+              <i class="ri-arrow-right-line text-2xl"></i>
+            </button>
+          </div>
+
+          <!-- Navigation Dots -->
+          <div class="flex justify-center space-x-2 mt-8">
+            <button class="w-3 h-3 rounded-full bg-gray-600 dot active"></button>
+            <button class="w-3 h-3 rounded-full bg-gray-600 dot"></button>
+            <button class="w-3 h-3 rounded-full bg-gray-600 dot"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div
+    class="relative h-[400px] w-[90%] mb-24 rounded-lg overflow-hidden px-4 md:px-8 mt-8 mx-auto "
+    data-aos="zoom-in"
+    >
+    <img
+      src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d"
+      alt="Architecture Background"
+      class="absolute inset-0 w-full h-full object-cover opacity-50"
+    />
+    <div
+      class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 w-[90%]"
+    >
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">
+        Engage With Our Expert Architects
+      </h2>
+      <p class="text-xl mb-8">Schedule A Consultation Today</p>
+      <a href="index.html#contact">
+      <button
+        class="bg-black text-[#cce4bc] px-8 py-3 rounded hover:bg-[#cce4bc] hover:text-black transition-colors text-center"
+      >
+        Book Now
+      </button></a>
+    </div>
+    
+</div>
+    <!-- Footer (Same as index.html) -->
+    <footer class="bg-[#1a1a1a] py-16 border-t border-black/10">
+      <!-- Copy footer content from index.html -->
+    </footer>
+
+    <script>
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 50,
+        easing: "ease-out-cubic",
+        disable: 'mobile'
+      });
+
+      // Testimonial Slider
+      const slider = document.querySelector('.testimonial-slider');
+      const dots = document.querySelectorAll('.dot');
+      let currentSlide = 0;
+      const slideCount = document.querySelectorAll('.testimonial-slide').length;
+      let isTransitioning = false;
+      let autoSlideInterval;
+
+      // Touch variables
+      let touchStartX = 0;
+      let touchEndX = 0;
+      let isDragging = false;
+      let startPos = 0;
+      let currentTranslate = 0;
+
+      // Add these new variables
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const videoElement = document.querySelector('.testimonial-slide video');
+      let isVideoPlaying = false;
+
+      // Add new variable for hover detection
+      let isHovered = false;
+
+      function updateSlider(transition = true) {
+        if (transition) {
+          slider.style.transition = 'transform 0.3s ease-out';
+        } else {
+          slider.style.transition = 'none';
+        }
+        
+        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        // Update dots
+        dots.forEach((dot, index) => {
+          if (index === currentSlide) {
+            dot.classList.add('bg-white');
+            dot.classList.remove('bg-gray-600');
+          } else {
+            dot.classList.remove('bg-white');
+            dot.classList.add('bg-gray-600');
+          }
+        });
+
+        // Pause all videos when sliding
+        if (currentSlide !== 0) { // Only pause if moving away from video slide
+          const videos = document.querySelectorAll('video');
+          videos.forEach(video => video.pause());
+        }
+      }
+
+      function nextSlide() {
+        if (!isTransitioning && currentSlide < slideCount - 1) {
+          isTransitioning = true;
+          currentSlide++;
+          updateSlider();
+          setTimeout(() => {
+            isTransitioning = false;
+          }, 300);
+        }
+      }
+
+      function prevSlide() {
+        if (!isTransitioning && currentSlide > 0) {
+          isTransitioning = true;
+          currentSlide--;
+          updateSlider();
+          setTimeout(() => {
+            isTransitioning = false;
+          }, 300);
+        }
+      }
+
+      // Touch Events
+      function touchStart(e) {
+        resetAutoSlide();
+        isDragging = true;
+        const touch = e.type === 'mousedown' ? e : e.touches[0];
+        touchStartX = touch.clientX;
+        startPos = -currentSlide * 100;
+        
+        slider.style.transition = 'none';
+        
+        // Pause video if playing
+        const videos = document.querySelectorAll('video');
+        videos.forEach(video => video.pause());
+      }
+
+      function touchMove(e) {
+        if (!isDragging) return;
+        e.preventDefault();
+        const touch = e.type === 'mousemove' ? e : e.touches[0];
+        touchEndX = touch.clientX;
+        const diff = ((touchEndX - touchStartX) / window.innerWidth) * 100;
+        const newPosition = startPos + diff;
+        
+        slider.style.transform = `translateX(${newPosition}%)`;
+      }
+
+      function touchEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+        
+        const movedBy = touchEndX - touchStartX;
+        
+        if (Math.abs(movedBy) > 50) {
+          if (movedBy > 0 && currentSlide > 0) {
+            prevSlide();
+          } else if (movedBy < 0 && currentSlide < slideCount - 1) {
+            nextSlide();
+          } else {
+            updateSlider();
+          }
+        } else {
+          updateSlider();
+        }
+        
+        if (!isVideoPlaying && !isHovered) {
+          startAutoSlide();
+        }
+      }
+
+      // Auto-sliding
+      function startAutoSlide() {
+        clearInterval(autoSlideInterval);
+        if (!isVideoPlaying && !isDragging && !isHovered) {
+          autoSlideInterval = setInterval(nextSlide, 5000);
+        }
+      }
+
+      function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+      }
+
+      // Add hover event listeners to the slider
+      slider.addEventListener('mouseenter', () => {
+        isHovered = true;
+        resetAutoSlide();
+      });
+
+      slider.addEventListener('mouseleave', () => {
+        isHovered = false;
+        if (!isVideoPlaying) {
+          startAutoSlide();
+        }
+      });
+
+      // Update video event listeners
+      videoElement.addEventListener('play', () => {
+        isVideoPlaying = true;
+        resetAutoSlide();
+      });
+
+      videoElement.addEventListener('pause', () => {
+        isVideoPlaying = false;
+        if (!isDragging && !isHovered) {
+          startAutoSlide();
+        }
+      });
+
+      videoElement.addEventListener('ended', () => {
+        isVideoPlaying = false;
+        if (!isDragging && !isHovered) {
+          startAutoSlide();
+        }
+      });
+
+      // Update button event listeners
+      prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        resetAutoSlide();
+        prevSlide();
+        if (!isVideoPlaying && !isHovered) {
+          startAutoSlide();
+        }
+      });
+
+      nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        resetAutoSlide();
+        nextSlide();
+        if (!isVideoPlaying && !isHovered) {
+          startAutoSlide();
+        }
+      });
+
+      // Update dots click handler
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          resetAutoSlide();
+          currentSlide = index;
+          updateSlider();
+          if (!isVideoPlaying && !isHovered) {
+            startAutoSlide();
+          }
+        });
+      });
+
+      // Event Listeners
+      slider.addEventListener('touchstart', touchStart);
+      slider.addEventListener('touchmove', touchMove);
+      slider.addEventListener('touchend', touchEnd);
+      slider.addEventListener('mousedown', touchStart);
+      slider.addEventListener('mousemove', touchMove);
+      slider.addEventListener('mouseup', touchEnd);
+      slider.addEventListener('mouseleave', touchEnd);
+
+      // Prevent context menu on long press
+      slider.addEventListener('contextmenu', e => e.preventDefault());
+
+      // Initialize slider
+      updateSlider(false);
+      startAutoSlide();
+
+      // Mobile Menu Functionality
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const hamburger = menuBtn.querySelector(".hamburger");
+
+      menuBtn.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        document.body.classList.toggle("menu-open");
+
+        if (mobileMenu.classList.contains("translate-x-full")) {
+          mobileMenu.classList.remove("translate-x-full");
+          mobileMenu.classList.add("translate-x-0");
+        } else {
+          mobileMenu.classList.remove("translate-x-0");
+          mobileMenu.classList.add("translate-x-full");
+        }
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll("#mobileMenu .nav-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          document.body.classList.remove("menu-open");
+          mobileMenu.classList.remove("translate-x-0");
+          mobileMenu.classList.add("translate-x-full");
+        });
+      });
+
+      // Close mobile menu when screen size changes to desktop
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768) {
+          hamburger.classList.remove("active");
+          document.body.classList.remove("menu-open");
+          mobileMenu.classList.remove("translate-x-0");
+          mobileMenu.classList.add("translate-x-full");
+        }
+      });
+
+    </script>
+  </body>
+</html>
