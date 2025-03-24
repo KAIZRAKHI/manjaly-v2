@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery - Manjaly</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body { 
+        font-family: "Space Grotesk", sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-[#1a1a1a] bg-opacity-95 px-4 md:px-8 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <span class="text-white flex items-center gap-2">
+          <img src="manjani-logo.png" alt="" class="h-8 w-auto" />
+                <span>Manjaly</span>
+              </span>
+                <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-400 hover:text-white">Home</a>
+                <a href="about.html" class="text-gray-400 hover:text-white">About</a>
+                <a href="projects.html" class="text-white">Work</a>
+                <a href="#" class="text-gray-400 hover:text-white">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center">
+        <div class="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d"
+                 alt="Hero Background" 
+          class="w-full h-full object-cover"
+        />
+            <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 text-center">
+        <h1
+          class="text-3xl sm:text-4xl md:text-6xl font-bold mb-6"
+          data-aos="fade-down"
+        >
+          Our Portfolio of<br />Excellence
+            </h1>
+        <p
+          class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          Explore our diverse collection of architectural projects that showcase
+          our commitment to innovation and quality.
+            </p>
+        </div>
+    </section>
+
+    <!-- Projects Grid Section -->
+    <section class="py-20 px-4 md:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div id="projects-grid">
+          <h2 class="text-3xl md:text-4xl font-bold mb-12" data-aos="fade-up">
+            Our Projects
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Projects will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1a1a1a] py-16 border-t border-gray-800">
+        <!-- Copy footer content from index.html -->
+    </footer>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+        easing: "ease-out-cubic",
+      });
+    </script>
+
+    <!-- Add this script before the closing body tag -->
+    <script>
+      // Initialize Supabase client
+      const { createClient } = supabase;
+      const supabaseClient = createClient(
+        "https://olkcohyhgnsdwihrhtpt.supabase.co",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9sa2NvaHloZ25zZHdpaHJodHB0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDAyOTMzMTgsImV4cCI6MjA1NTg2OTMxOH0.QJVOWw3gwsapcWwbeIHncNrJbb0obbqoM3o97Fc955Q"
+      );
+
+      // Load gallery items from Supabase
+      async function loadGallery() {
+        try {
+          const { data, error } = await supabaseClient
+            .from("gallery")
+            .select("*")
+            .order("created_at", { ascending: false });
+
+          if (error) throw error;
+
+          // Get the projects grid
+          const projectsGrid = document.querySelector("#projects-grid .grid");
+
+          if (!data || data.length === 0) {
+            projectsGrid.innerHTML =
+              '<p class="text-gray-400 col-span-3 text-center">No projects found</p>';
+            return;
+          }
+
+          // Render all projects
+          projectsGrid.innerHTML = data
+            .map(
+              (item) => `
+                    <div class="group" data-aos="fade-up">
+                        <div class="overflow-hidden rounded-lg">
+                            <img src="${item.image_url}" 
+                                 alt="${item.title}" 
+                                 class="w-full h-72 object-cover rounded-lg">
+                        </div>
+                        <div class="mt-6 space-y-2">
+                            <h3 class="text-xl font-bold">${item.title}</h3>
+                            <p class="text-gray-400">${item.completion_status}</p>
+
+                        </div>
+                    </div>
+                `
+            )
+            .join("");
+
+          // Initialize AOS for new elements
+          AOS.refresh();
+        } catch (error) {
+          console.error("Error loading gallery:", error);
+          document.querySelector("#projects-grid .grid").innerHTML =
+            '<p class="text-red-500 col-span-3 text-center">Error loading projects</p>';
+        }
+      }
+
+      // Load gallery when page loads
+      loadGallery();
+    </script>
+</body>
+</html>
